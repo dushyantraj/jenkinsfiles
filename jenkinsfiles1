@@ -16,8 +16,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                 sh ' sudo chmod 777 /root/Assignment1.pem'
-                 sh 'chmod 777 Assignment1.pem'
+                 sh ' sudo chmod 777 /root/Assignment1.pem '
 
                  sh ' scp -i /root/Assignment1.pem /var/www/html/index.html  ubuntu@13.233.123.183:/var/www/html/index.html '
             }
