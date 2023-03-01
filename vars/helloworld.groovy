@@ -1,4 +1,5 @@
-def call(String name , String day){
+def call(Map config = [:]){
     sh "echo hello world"
-    sh "echo ${name} and ${day}"
+    sh "echo ${name.config} and ${day.config}"
 }
+
