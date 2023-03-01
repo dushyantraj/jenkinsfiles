@@ -11,7 +11,7 @@ pipeline {
              echo "HELLO Finally Done " > index.html '
              sudo mv index.html /var/www/html/
              '''
-               dir('/var/lib/html'){
+               dir('/var/www/html'){
                 stash name: 'myfile', includes: 'index.html'
                 }
             }
