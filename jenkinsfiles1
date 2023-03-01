@@ -9,7 +9,7 @@ pipeline {
                 sh 'sudo  apt-get -y install apache2'
                 sh 'sudo  systemctl start apache2'
                 sh 'sudo  systemctl enable apache2'
-                sh 'sudo chown -R ubuntu:ubuntu /var/www/html '
+               
                 sh 'echo "hello" > /var/www/html/index.html'
             }
         }
