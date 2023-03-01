@@ -25,7 +25,7 @@ pipeline {
                 sh 'sudo  apt-get -y install apache2'
                 sh 'sudo  systemctl start apache2'
                 sh 'sudo  systemctl enable apache2'
-             
+                sh 'mv /var/jenkins/workspace/final/index.html /var/www/html
             }
         }
         
