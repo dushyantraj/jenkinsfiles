@@ -20,7 +20,7 @@
             }
         }
         stage('Copy file from master to slave') {
-            agent { label 'slave' } // Run this stage on the slave node
+            agent { label 'linux-slave' } // Run this stage on the slave node
             steps {
                 // Unstash the file on the slave node
                 unstash 'index.html'
