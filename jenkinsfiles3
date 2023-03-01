@@ -26,7 +26,7 @@ pipeline {
                 sh 'sudo  systemctl start apache2'
                 sh 'sudo  systemctl enable apache2'
                 sh 'sudo chown -R jenkins:jenkins /var/www/html '
-                sh 'sudo mv /var/jenkins/workspace/slave-pipeline/index.html /var/www/html/'
+               
             }
         }
         
