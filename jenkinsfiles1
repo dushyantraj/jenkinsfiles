@@ -15,9 +15,6 @@ pipeline {
         }
 
         stage('Deploy') {
-             agent{
-                  label 'linux-slave'
-             }
             steps {
                  sh 'scp /var/www/html/index.html ubuntu@13.233.123.183:/var/www/html/index.html'
             }
