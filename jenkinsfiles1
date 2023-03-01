@@ -16,7 +16,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                 sh 'scp -i Assignment1.pem /var/www/html/index.html ubuntu@13.233.123.183:/var/www/html/index.html'
+                 sh ' scp -i Assignment1.pem /var/www/html/index.html  ubuntu@13.233.123.183:/var/www/html/index.html '
             }
         }
     }
