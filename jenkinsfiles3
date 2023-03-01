@@ -1,0 +1,47 @@
+pipeline {
+    agent any
+    stages {
+
+        stage('Build WEBPAGE') {
+            agent{
+                label 'master'
+            }
+            steps {
+             sh 'echo "HELLO Finally Done " > index.html '
+            }
+        }
+         stage('Copy file to slave') {
+            steps {
+               dir('/var/lib/jenkins'){
+                // Stash the file on the master node
+                stash name: 'myfile', includes: 'index.html'
+                }
+            }
+        }
+        
+        stage('Deploy website') {
+            agent { label 'linux-slave' } 
+            steps {
+               unstash 'myfile'
+               
+                sh 'echo "Building webpage this time..."'
+                sh 'echo "Deploying webpage using httpd..."'
+                sh 'sudo  apt-get -y install apache2'
+                sh 'sudo  systemctl start apache2'
+                sh 'sudo  systemctl enable apache2'
+                sh 'sudo chown -R jenkins:jenkins /var/www/html '
+                
+            }
+        }
+        
+    }
+
+    post {
+        success {
+            sh 'echo "Webpage successfully deployed using httpd."'
+        }
+    }
+     triggers { 
+     pollSCM ('* * * * *')
+     }
+}
