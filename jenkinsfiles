@@ -10,6 +10,9 @@ pipeline {
         }
 
         stage('Deploy') {
+             agent{
+                  label 'slave'
+             }
             steps {
                 sh 'echo "Deploying webpage using httpd..."'
                 sh 'sudo  apt-get -y install apache2'
