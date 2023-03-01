@@ -20,6 +20,14 @@
             }
         }
         
+        stage('Copy file from master to slave') {
+            agent { label 'linux-slave' } 
+            steps {
+               
+                unstash 'myfile'
+            }
+        }
+        
     }
 
     post {
