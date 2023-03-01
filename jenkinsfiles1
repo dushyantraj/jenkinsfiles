@@ -1,0 +1,36 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Build') {
+            steps {
+                sh 'echo "Building webpage this time..."'
+                sh 'echo "Deploying webpage using httpd..."'
+                sh 'sudo  apt-get -y install apache2'
+                sh 'sudo  systemctl start apache2'
+                sh 'sudo  systemctl enable apache2'
+                sh 'sudo chown -R jenkins:jenkins /var/www/html '
+                sh 'echo "hello" > /var/www/html/index.html'
+            }
+        }
+
+        stage('Deploy') {
+             agent{
+                  label 'linux-slave'
+             }
+            steps {
+                sh 'scp /var/www/html/index.html ubuntu@13.233.123.183:/var/www/html/index.html'
+            }
+        }
+    }
+
+    post {
+        success {
+            sh 'echo "Webpage successfully deployed using httpd."'
+        }
+    }
+     triggers { 
+     pollSCM ('* * * * *')
+     }
+}
