@@ -4,7 +4,7 @@ pipeline {
 
         stage('Build WEBPAGE') {
             agent{
-                label 'Built-In Node'
+                label 'master'
             }
             steps {
              sh 'echo "HELLO Finally Done " > index.html '
