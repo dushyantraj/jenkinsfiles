@@ -7,13 +7,11 @@ pipeline {
                 label 'master'
             }
             steps {
-             sh 'echo "HELLO Finally Done " > index.html '
-            }
-        }
-         stage('Copy file to slave') {
-            steps {
-               dir('/var/lib/jenkins'){
-                // Stash the file on the master node
+             sh '''
+             echo "HELLO Finally Done " > index.html '
+             sudo mv index.html /var/www/html/
+             '''
+               dir('/var/lib/html'){
                 stash name: 'myfile', includes: 'index.html'
                 }
             }
@@ -23,14 +21,12 @@ pipeline {
             agent { label 'linux-slave' } 
             steps {
                unstash 'myfile'
-               
-                sh 'echo "Building webpage this time..."'
-                sh 'echo "Deploying webpage using httpd..."'
+            
                 sh 'sudo  apt-get -y install apache2'
                 sh 'sudo  systemctl start apache2'
                 sh 'sudo  systemctl enable apache2'
                 sh 'sudo chown -R jenkins:jenkins /var/www/html '
-                
+                sh 'sudo mv /var/jenkins/workspace/slave-pipeline/index.html /var/www/html/'
             }
         }
         
