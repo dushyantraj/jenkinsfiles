@@ -16,7 +16,7 @@
          stage('Copy file to slave') {
             steps {
                 // Stash the file on the master node
-                stash name: 'myfile', includes: '/var/www/html/index.html'
+                stash name: 'myfile', includes: '/var/www/html'
             }
         }
         
