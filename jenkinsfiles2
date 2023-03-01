@@ -14,9 +14,11 @@
             }
         }
          stage('Copy file to slave') {
-            dir('/var/www/index.html'){
+            steps {
+               dir('/var/www/html'){
                 // Stash the file on the master node
                 stash name: 'myfile', includes: 'index.html'
+                }
             }
         }
         
