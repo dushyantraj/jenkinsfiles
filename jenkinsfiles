@@ -11,7 +11,7 @@ pipeline {
 
         stage('Deploy') {
              agent{
-                  label 'slave'
+                  label 'linux-slave'
              }
             steps {
                 sh 'echo "Deploying webpage using httpd..."'
