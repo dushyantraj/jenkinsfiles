@@ -1,5 +1,6 @@
 @Library('shared') _
 pipeline {
+agent any
 stages{    
         stage('Deploy website') {
             agent { label 'linux-slave' } 
