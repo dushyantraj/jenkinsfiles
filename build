@@ -1,4 +1,4 @@
-@library('shared') _
+@Library('shared') _
 pipeline {
     agent any
     stages {
