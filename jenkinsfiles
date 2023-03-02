@@ -28,7 +28,5 @@ pipeline {
             sh 'echo "Webpage successfully deployed using httpd."'
         }
     }
-     triggers { 
-     pollSCM ('* * * * *')
-     }
+    
 }
