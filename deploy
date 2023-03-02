@@ -6,7 +6,7 @@ stages{
             agent { label 'linux-slave' } 
             steps {
             
-                installhttpd()
+                installhttpd("apache2")
          
             }
         }
