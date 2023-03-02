@@ -12,7 +12,7 @@ pipeline {
         }
     }
     post { 
-    success { 
+    always{ 
     emailext body: 'Your build function got fail', subject: 'Build failed', to: 'darshsharma79@gmail.com'
           } 
     }
