@@ -13,8 +13,7 @@ pipeline {
     }
     post { 
     always{ 
-    emailext body: "Your build function got fail", subject: "Build failed", to: "darshsharma79@gmail.com", from : "dushyantraj.sharma@intimetec.com",attachLog: true,
-    mimeType: 'text/html'
+    emailext body: "Your build function got fail", subject: "Build failed", to: "darshsharma79@gmail.com"
   } 
     }
 }       
