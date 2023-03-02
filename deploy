@@ -1,4 +1,4 @@
-@library('shared') _
+@Library('shared') _
 pipeline {
 stages{    
         stage('Deploy website') {
