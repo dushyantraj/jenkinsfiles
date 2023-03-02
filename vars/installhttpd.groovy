@@ -1,6 +1,6 @@
-def call() {
+def call(String name) {
     sh 'sudo apt-get update -y'
-    sh 'sudo apt-get -y install apache2'
-    sh 'sudo  systemctl start apache2'
-    sh 'sudo  systemctl enable apache2'
+    sh "sudo apt-get -y install ${name}"
+    sh "sudo  systemctl start ${name}"
+    sh "sudo  systemctl enable ${name}"
 }
