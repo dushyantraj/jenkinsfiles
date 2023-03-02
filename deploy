@@ -18,7 +18,7 @@ stages{
         }
     }
      triggers { 
-     pollSCM ('* * * * *')
+     pollSCM ('H H * * *')
      }
 
 }
