@@ -1,12 +1,11 @@
 @Library('shared') _
 pipeline {
-    agent any
+    agent{
+                label 'master'
+            }
     stages {
 
         stage('build') {
-            agent{
-                label 'master'
-            }
             steps {
               build()
             }
