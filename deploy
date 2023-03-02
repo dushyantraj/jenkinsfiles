@@ -1,0 +1,24 @@
+@library('shared') _
+pipeline {
+stages{    
+        stage('Deploy website') {
+            agent { label 'linux-slave' } 
+            steps {
+            
+                installhttpd()
+         
+            }
+        }
+        
+    }
+
+    post {
+        success {
+            sh 'echo "Webpage successfully deployed."'
+        }
+    }
+     triggers { 
+     pollSCM ('* * * * *')
+     }
+
+}
